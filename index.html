@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishnu Chaudhary | Graphic Designer Portfolio</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-color: #00d2ff;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-light: #f5f5f5;
+            --text-gray: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-info-hero {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            margin-top: 20px;
+        }
+
+        .contact-info-hero p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        /* Software List */
+        .software-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .software-tag {
+            background-color: var(--bg-card);
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            cursor: default;
+        }
+
+        .software-tag:hover {
+            background-color: var(--primary-color);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Portfolio Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: var(--bg-card);
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .overlay h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .overlay p {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-contacts {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #000;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            header { flex-direction: column; padding: 15px; }
+            nav ul { margin-top: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Vishnu Design</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#software">Software</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Vishnu Chaudhary</h1>
+        <h2>Graphic Designer | UI/UX | Branding Expert</h2>
+        <div class="contact-info-hero">
+            <p>📧 vs1254346@gmail.com</p>
+            <p>📞 +91 9084413381</p>
+        </div>
+        <a href="#portfolio" class="btn">View My Work</a>
+    </section>
+
+    <!-- Software Skills Section -->
+    <section id="software">
+        <h2 class="section-title">Software Proficiency</h2>
+        <p style="text-align: center; margin-bottom: 30px; color: #aaa;">I am proficient in over 30+ design and productivity tools.</p>
+        
+        <div class="software-grid">
+            <div class="software-tag">Adobe Photoshop</div>
+            <div class="software-tag">Adobe Illustrator</div>
+            <div class="software-tag">Adobe InDesign</div>
+            <div class="software-tag">Adobe After Effects</div>
+            <div class="software-tag">Adobe Premiere Pro</div>
+            <div class="software-tag">Adobe Lightroom</div>
+            <div class="software-tag">Adobe XD</div>
+            <div class="software-tag">3DMAX</div>
+            <div class="software-tag">Maya</div>
+            <div class="software-tag">Webflow</div>
+            <div class="software-tag">PHOTOSHOP</div>
+            <div class="software-tag">Substance Painter</div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title">My Portfolio</h2>
+        <div class="gallery-grid">
+            
+            <!-- Image 1 -->
+            <div class="gallery-item">
+                <img src="DSC_0720.jpg" alt="Portfolio Image 1">
+                <div class="overlay">
+                    <h3>Project 01</h3>
+                    <p>Graphic Design</p>
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="gallery-item">
+                <img src="DSC_0721.jpg" alt="Portfolio Image 2">
+                <div class="overlay">
+                    <h3>Project 02</h3>
+                    <p>Branding</p>
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="gallery-item">
+                <img src="DSC_0722.jpg" alt="Portfolio Image 3">
+                <div class="overlay">
+                    <h3>Project 03</h3>
+                    <p>UI/UX Design</p>
+                </div>
+            </div>
+
+            <!-- Image 4 -->
+            <div class="gallery-item">
+                <img src="DSC_0723.jpg" alt="Portfolio Image 4">
+                <div class="overlay">
+                    <h3>Project 04</h3>
+                    <p>Social Media</p>
+                </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="gallery-item">
+                <img src="DSC_0724.jpg" alt="Portfolio Image 5">
+                <div class="overlay">
+                    <h3>Project 05</h3>
+                    <p>Logo Design</p>
+                </div>
+            </div>
+
+            <!-- Image 6 -->
+            <div class="gallery-item">
+                <img src="DSC_0725.jpg" alt="Portfolio Image 6">
+                <div class="overlay">
+                    <h3>Project 06</h3>
+                    <p>Magazine Design</p>
+                </div>
+            </div>
+
+            <!-- Image 7 -->
+            <div class="gallery-item">
+                <img src="DSC_0726.jpg" alt="Portfolio Image 7">
+                <div class="overlay">
+                    <h3>Project 07</h3>
+                    <p>Poly Art</p>
+                </div>
+            </div>
+
+            <!-- Image 8 -->
+            <div class="gallery-item">
+                <img src="DSC_0727.jpg" alt="Portfolio Image 8">
+                <div class="overlay">
+                    <h3>Project 08</h3>
+                    <p>Mockup</p>
+                </div>
+            </div>
+
+            <!-- Image 9 -->
+            <div class="gallery-item">
+                <img src="DSC_0728.jpg" alt="Portfolio Image 9">
+                <div class="overlay">
+                    <h3>Project 09</h3>
+                    <p>Branding Kit</p>
+                </div>
+            </div>
+
+            <!-- Image 10 -->
+            <div class="gallery-item">
+                <img src="DSC_0729.jpg" alt="Portfolio Image 10">
+                <div class="overlay">
+                    <h3>Project 10</h3>
+                    <p>Poster Design</p>
+                </div>
+            </div>
+
+            <!-- Image 11 -->
+            <div class="gallery-item">
+                <img src="DSC_0730.jpg" alt="Portfolio Image 11">
+                <div class="overlay">
+                    <h3>Project 11</h3>
+                    <p>Packaging</p>
+                </div>
+            </div>
+
+            <!-- Image 12 -->
+            <div class="gallery-item">
+                <img src="DSC_0731.jpg" alt="Portfolio Image 12">
+                <div class="overlay">
+                    <h3>Project 12</h3>
+                    <p>Web Design</p>
+                </div>
+            </div>
+
+            <!-- Image 13 -->
+            <div class="gallery-item">
+                <img src="DSC_0732.jpg" alt="Portfolio Image 13">
+                <div class="overlay">
+                    <h3>Project 13</h3>
+                    <p>3D Art</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <h2>Let's Work Together</h2>
+        <p style="margin: 20px 0; color: #aaa;">Ready to start your next project? Contact me today.</p>
+        
+        <div class="footer-contacts">
+            <p><strong>Email:</strong> vs1254346@gmail.com</p>
+            <p><strong>Phone:</strong> +91 9084413381</p>
+        </div>
+
+        <a href="mailto:vs1254346@gmail.com" class="btn">Send Email</a>
+        
+        <p style="margin-top: 50px; font
